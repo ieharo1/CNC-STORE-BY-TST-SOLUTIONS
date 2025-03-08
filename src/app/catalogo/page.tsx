@@ -54,7 +54,7 @@ export default function Catalogo() {
     <div>
       <h1 className="text-3xl font-bold text-red-600 mb-4">Catálogo de Productos</h1>
       <div className="bg-gray-100 rounded-lg pt-4 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-4 p-4">
           {productos.map((producto) => (
             <div key={producto.id} className="bg-white border p-4 rounded-lg shadow-lg">
               {/* Foto de la máquina */}
@@ -65,8 +65,8 @@ export default function Catalogo() {
                 onClick={() => openModal(producto.foto)} // Abrir el modal al hacer clic
               />
               <h2 className="text-xl font-semibold">{producto.nombre}</h2>
-              <p className="text-gray-700 font-bold text-lg">${producto.precio}</p>
-
+              <p className="mt-2 text-gray-700 font-bold text-lg">${producto.precio}</p>
+                <p className="mt-2 text-gray-700">Características:</p>
               {/* Características */}
               <ul className="mt-4 text-gray-600">
                 {producto.caracteristicas.map((caracteristica, index) => (

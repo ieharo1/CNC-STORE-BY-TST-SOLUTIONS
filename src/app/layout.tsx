@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </Link>
               <nav className="ml-auto flex items-center space-x-6">
                 {/* Usa el componente CarritoIcono */}
-                <CarritoIcono />
+                <CarritoIcono/>
               </nav>
             </div>
           </header>
