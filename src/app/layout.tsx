@@ -16,6 +16,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         />
+        {/* Agrega el favicon */}
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body className="bg-white text-black">
         <Provider store={store}>
@@ -28,7 +30,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </Link>
               <nav className="ml-auto flex items-center space-x-6">
                 {/* Usa el componente CarritoIcono */}
-                <CarritoIcono/>
+                <CarritoIcono />
               </nav>
             </div>
           </header>
