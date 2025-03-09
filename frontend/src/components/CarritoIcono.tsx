@@ -26,6 +26,10 @@ export default function CarritoIcono() {
     }
   }, [cantidadRedux, isClient]);
 
+  // Si no estamos en el cliente aún, no renderizamos nada
+  if (!isClient) {
+    return null;
+  }
   return (
     <Link href="/carrito" className="text-white hover:underline flex items-center relative">
       <div className="flex items-center">
