@@ -9,7 +9,7 @@ export default function Home() {
         {/* Logo encima del texto */}
         <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <Image
-            src="/pantalla-principal/logo-negro.png" // Ruta de tu logo
+            src="/images/pantalla-principal/logo-negro.png" // Ruta de tu logo
             alt="Logo de LEGION CNC"
             width={200}
             height={200}
@@ -19,7 +19,7 @@ export default function Home() {
         <h1 className="text-4xl font-bold mt-48">Bienvenido a LEGION CNC</h1>
         <p className="text-lg mt-4">Máquinas CNC de alta precisión y calidad</p>
         <a
-          href="/catalogo"
+          href="/pages/catalogo"
           className="mt-6 inline-block bg-white text-red-600 px-6 py-3 rounded-lg font-bold hover:bg-gray-200 transition duration-300"
         >
           Ver Catálogo
@@ -31,9 +31,9 @@ export default function Home() {
         <h2 className="text-3xl font-bold text-center mb-8">Nuestras Máquinas</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { src: "/galeria-imagenes/laser.jpg", text: "LASER" },
-            { src: "/galeria-imagenes/plasma.jpg", text: "PLASMA" },
-            { src: "/galeria-imagenes/router.jpg", text: "ROUTER" },
+            { src: "/images/galeria-imagenes/laser.jpg", text: "LASER" },
+            { src: "/images/galeria-imagenes/plasma.jpg", text: "PLASMA" },
+            { src: "/images/galeria-imagenes/router.jpg", text: "ROUTER" },
           ].map((machine, index) => (
             <div key={index} className="text-center">
               <Image
@@ -76,12 +76,12 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
           {[
-            { src: "/materiales/madera.jpg", text: "Todo tipo de maderas" },
-            { src: "/materiales/piedra.jpg", text: "Piedra y Granito" },
-            { src: "/materiales/pvc.jpg", text: "PVC Plásticos y Espumaflex" },
-            { src: "/materiales/cobre.jpg", text: "Cobre, Aluminio y metales no ferrosos" },
-            { src: "/materiales/acrilico.jpg", text: "Acrílico y Policarbonato" },
-            { src: "/materiales/alucobond.jpg", text: "Alucobond" },
+            { src: "/images/materiales/madera.jpg", text: "Todo tipo de maderas" },
+            { src: "/images/materiales/piedra.jpg", text: "Piedra y Granito" },
+            { src: "/images/materiales/pvc.jpg", text: "PVC Plásticos y Espumaflex" },
+            { src: "/images/materiales/cobre.jpg", text: "Cobre, Aluminio y metales no ferrosos" },
+            { src: "/images/materiales/acrilico.jpg", text: "Acrílico y Policarbonato" },
+            { src: "/images/materiales/alucobond.jpg", text: "Alucobond" },
           ].map((material, index) => (
             <div key={index} className="flex flex-col items-center">
               <Image
@@ -152,9 +152,11 @@ export default function Home() {
         <div className="flex flex-wrap justify-center gap-8">
           {/* Testimonio 1 */}
           <div className="flex items-center max-w-xl mx-auto bg-gray-100 p-6 rounded-lg shadow-lg">
-            <img
-              src="/testimonials/testimonio1.jpg" // Ruta de la imagen del testimonio
+            <Image
+              src="/images/testimonials/testimonio1.jpg" // Ruta de tu logo
               alt="Testimonio 1"
+              width={200}
+              height={200}
               className="w-24 h-24 rounded-full object-cover mr-6"
             />
             <div>
@@ -165,10 +167,12 @@ export default function Home() {
 
           {/* Testimonio 2 */}
           <div className="flex items-center max-w-xl mx-auto bg-gray-100 p-6 rounded-lg shadow-lg flex-row-reverse">
-            <img
-              src="/testimonials/testimonio2.jpg" // Ruta de la imagen del testimonio
-              alt="Testimonio 2"
-              className="w-24 h-24 rounded-full object-cover ml-6"
+            <Image
+              src="/images/testimonials/testimonio1.jpg" // Ruta de tu logo
+              alt="Testimonio 1"
+              width={200}
+              height={200}
+              className="w-24 h-24 rounded-full object-cover mr-6"
             />
             <div>
               <p className="text-lg">"Las máquinas CNC de LEGION CNC han optimizado nuestras operaciones a nivel global"</p>
@@ -178,9 +182,11 @@ export default function Home() {
 
           {/* Testimonio 3 */}
           <div className="flex items-center max-w-xl mx-auto bg-gray-100 p-6 rounded-lg shadow-lg">
-            <img
-              src="/testimonials/testimonio3.jpg" // Ruta de la imagen del testimonio
-              alt="Testimonio 3"
+            <Image
+              src="/images/testimonials/testimonio1.jpg" // Ruta de tu logo
+              alt="Testimonio 1"
+              width={200}
+              height={200}
               className="w-24 h-24 rounded-full object-cover mr-6"
             />
             <div>
@@ -191,10 +197,12 @@ export default function Home() {
 
           {/* Testimonio 4 */}
           <div className="flex items-center max-w-xl mx-auto bg-gray-100 p-6 rounded-lg shadow-lg flex-row-reverse">
-            <img
-              src="/testimonials/testimonio4.jpg" // Ruta de la imagen del testimonio
-              alt="Testimonio 4"
-              className="w-24 h-24 rounded-full object-cover ml-6"
+            <Image
+              src="/images/testimonials/testimonio1.jpg" // Ruta de tu logo
+              alt="Testimonio 1"
+              width={200}
+              height={200}
+              className="w-24 h-24 rounded-full object-cover mr-6"
             />
             <div>
               <p className="text-lg">"Las soluciones personalizadas de LEGION CNC nos han permitido ser más competitivos en el mercado"</p>

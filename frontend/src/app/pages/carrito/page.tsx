@@ -1,9 +1,10 @@
 'use client';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { eliminarProducto, incrementarCantidad, decrementarCantidad } from '../../redux/carritoSlice';
-import type { RootState } from '../../redux/store';
+import { eliminarProducto, incrementarCantidad, decrementarCantidad } from '../../../redux/carritoSlice';
+import type { RootState } from '../../../redux/store';
 import { useEffect, useState } from 'react';
+
 
 export default function Carrito() {
   const [isMounted, setIsMounted] = useState(false); // Estado para verificar si el componente está montado
@@ -17,16 +18,16 @@ export default function Carrito() {
     setIsClient(true);
   }, []);
 
-  const handleEliminarDelCarrito = (id: number) => {
-    dispatch(eliminarProducto(id));
+  const handleEliminarDelCarrito = (_id: string) => { // Cambia el tipo a `string`
+    dispatch(eliminarProducto(_id));
   };
 
-  const handleIncrementarCantidad = (id: number) => {
-    dispatch(incrementarCantidad(id));
+  const handleIncrementarCantidad = (_id: string) => { // Cambia el tipo a `string`
+    dispatch(incrementarCantidad(_id));
   };
 
-  const handleDecrementarCantidad = (id: number) => {
-    dispatch(decrementarCantidad(id));
+  const handleDecrementarCantidad = (_id: string) => { // Cambia el tipo a `string`
+    dispatch(decrementarCantidad(_id));
   };
 
   // Si el componente no está montado, no renderices nada
@@ -38,14 +39,14 @@ export default function Carrito() {
     return null;
   }
   return (
-    <div>
+    <div className="p-6">
       <h1 className="text-3xl font-bold text-red-600 mb-4">Carrito de Compras</h1>
       {productos.length === 0 ? (
         <p className="text-lg">No hay productos en el carrito.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-6 gap-4 p-4">
           {productos.map((producto) => (
-            <div key={producto.id} className="border p-4 rounded-lg bg-white">
+            <div key={producto._id} className="border p-4 rounded-lg bg-white">
               {/* Foto de la máquina */}
               <img
                 src={producto.foto}
@@ -54,7 +55,23 @@ export default function Carrito() {
               />
               <h2 className="text-xl font-semibold">{producto.nombre}</h2>
               <p className="mt-2 text-gray-700 font-bold text-lg">${producto.precio}</p>
-              <p className="mt-2 text-gray-700">Cantidad: {producto.cantidad}</p>
+              <div className="mt-2 text-gray-700 flex items-center">
+                <p className="mr-2 text-gray-700">Cantidad: {producto.cantidad}</p>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => handleDecrementarCantidad(producto._id)}
+                    className="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 text-sm flex items-center justify-center"
+                  >
+                    <i className="fas fa-arrow-down text-lg"></i>
+                  </button>
+                  <button
+                    onClick={() => handleIncrementarCantidad(producto._id)}
+                    className="p-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition duration-300 text-sm flex items-center justify-center"
+                  >
+                    <i className="fas fa-arrow-up text-lg"></i>
+                  </button>
+                </div>
+              </div>
               <p className="mt-2 text-gray-700">Características:</p>
               {/* Características */}
               <ul className=" text-gray-600">
@@ -62,27 +79,16 @@ export default function Carrito() {
                   <li key={index} className="text-sm">- {caracteristica}</li>
                 ))}
               </ul>
-              <div className="flex gap-2 mt-2">
+              <div className="flex gap-2 mt-4">
                 <button
-                  onClick={() => handleDecrementarCantidad(producto.id)}
-                  className="bg-red-600 text-white px-2 py-1 rounded-lg hover:bg-red-700 transition duration-300"
+                  onClick={() => handleEliminarDelCarrito(producto._id)}
+                  className="p-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition duration-300 text-sm flex items-center justify-center"
                 >
-                  -
-                </button>
-                <button
-                  onClick={() => handleIncrementarCantidad(producto.id)}
-                  className="bg-red-600 text-white px-2 py-1 rounded-lg hover:bg-red-700 transition duration-300"
-                >
-                  +
-                </button>
-                <button
-                  onClick={() => handleEliminarDelCarrito(producto.id)}
-                  className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300"
-                >
-                  Eliminar
+                  <i className="fas fa-trash-alt mr-2 text-lg"></i>Eliminar
                 </button>
               </div>
             </div>
+
           ))}
         </div>
       )}

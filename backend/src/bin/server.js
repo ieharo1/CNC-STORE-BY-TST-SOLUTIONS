@@ -1,18 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const productRoutes = require('./routes/productRoutes');
+const productRoutes = require('../routes/productRoutes');
 
 const app = express();
 const PORT = 3001;
 
-// Conectar a MongoDB
-mongoose.connect('mongodb://localhost:27017/cnc-store', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => console.log('Conectado a MongoDB'))
-.catch(err => console.error('Error conectando a MongoDB:', err));
+// Conectar a MongoDB (sin opciones obsoletas)
+mongoose.connect('mongodb://localhost:27017/cnc-store')
+    .then(() => console.log('Conectado a MongoDB'))
+    .catch(err => console.error('Error conectando a MongoDB:', err));
 
 // Middleware para parsear JSON
 app.use(express.json());

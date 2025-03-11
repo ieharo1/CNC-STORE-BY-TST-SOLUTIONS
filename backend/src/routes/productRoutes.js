@@ -11,4 +11,8 @@ router.post('/products', productController.addProduct);
 // Ruta para eliminar un producto por ID
 router.delete('/products/:id', productController.deleteProduct);
 
+// Ruta para actualizar un producto
+router.put('/products/:id', productController.updateProduct);
+
+
 module.exports = router;

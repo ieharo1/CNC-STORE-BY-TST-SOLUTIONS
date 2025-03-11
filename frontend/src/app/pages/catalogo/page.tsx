@@ -2,12 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { agregarProducto } from '../../redux/carritoSlice';
+import { agregarProducto } from '../../../redux/carritoSlice';
 import axios from 'axios';
 
 interface Producto {
   _id: string;
-  id: number;
   nombre: string;
   precio: number;
   foto: string;
@@ -42,9 +41,9 @@ export default function Catalogo() {
 
   // 👇 Esto evita el error de hidratación porque Next.js no renderiza contenido diferente en SSR y CSR
   if (!productos) {
-    
+
     return (
-      <div>
+      <div className="p-6">
         <h1 className="text-3xl font-bold text-red-600 mb-4">Catálogo de Productos</h1>
         <p className="text-lg">No hay productos en el catálogo.</p>
       </div>
@@ -59,7 +58,7 @@ export default function Catalogo() {
     return null;
   }
   return (
-    <div>
+    <div className="p-6">
       <h1 className="text-3xl font-bold text-red-600 mb-4">Catálogo de Productos</h1>
       <div className="grid grid-cols-1 md:grid-cols-6 gap-4 p-4">
         {productos.map((producto) => (
@@ -67,7 +66,7 @@ export default function Catalogo() {
             <img
               src={producto.foto}
               alt={producto.nombre}
-              className="w-full h-100 object-cover rounded-lg mb-4 transform transition duration-300 hover:scale-105"
+              className="w-full h-100 object-cover rounded-lg mb-4 transform transition duration-300 hover:scale-105" // Efecto hover
             />
             <h2 className="text-xl font-semibold">{producto.nombre}</h2>
             <p className="mt-2 text-gray-700 font-bold text-lg">${producto.precio}</p>
@@ -76,12 +75,14 @@ export default function Catalogo() {
                 <li key={index} className="text-sm">- {caracteristica}</li>
               ))}
             </ul>
-            <button
-              onClick={() => handleAgregarAlCarrito(producto)}
-              className="bg-red-600 text-white px-4 py-2 rounded-lg mt-2 hover:bg-red-700 transition duration-300"
-            >
-              Agregar al carrito
-            </button>
+            <div className="flex gap-2 mt-4">
+              <button
+                onClick={() => handleAgregarAlCarrito(producto)}
+                className="p-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition duration-300 text-sm"
+              >
+                <i className="fas fa-plus mr-2 text-lg"></i>Agregar al carrito
+              </button>
+            </div>
           </div>
         ))}
       </div>

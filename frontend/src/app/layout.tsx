@@ -4,8 +4,10 @@ import './globals.css';
 import type { ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
+import Image from "next/image";
 import Link from 'next/link'; // Importa Link desde Next.js
-import CarritoIcono from '../components/CarritoIcono'; // Importa el componente CarritoIcono
+import CarritoIcono from '../components/carrito/CarritoIcono'; // Importa el componente CarritoIcono
+import AdminIcono from '../components/admin/AdminIcono'; // Importa el componente AdminIcono
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -25,10 +27,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <div className="container mx-auto flex items-center">
               {/* Envolvemos el logo en un Link para redirigir a la pantalla principal */}
               <Link href="/" className="flex items-center space-x-2 hover:scale-105 transition-transform duration-300">
-                <img src="/pantalla-principal/logo-negro.png" alt="Logo CNC" className="h-12 w-auto mr-4" />
+                <Image
+                  src="/images/pantalla-principal/logo-negro.png" // Ruta de tu logo
+                  alt="Logo LEGION CNC"
+                  width={48}
+                  height={48}
+                  className="h-12 w-auto mr-4"
+                />
                 <h1 className="text-2xl font-bold">LEGION CNC</h1>
               </Link>
               <nav className="ml-auto flex items-center space-x-6">
+                {/* Aquí agregamos el ícono de administrador */}
+                <AdminIcono />
                 {/* Usa el componente CarritoIcono */}
                 <CarritoIcono />
               </nav>

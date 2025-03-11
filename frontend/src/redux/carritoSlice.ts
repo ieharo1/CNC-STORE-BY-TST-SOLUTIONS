@@ -1,66 +1,58 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface Producto {
-  id: number;
+  _id: string; // Cambia `id` por `_id`
   nombre: string;
   precio: number;
   foto: string;
   caracteristicas: string[];
-  cantidad: number; // Nueva propiedad
+  cantidad: number;
 }
 
 interface CarritoState {
   productos: Producto[];
 }
 
-// Cargar el estado inicial desde localStorage
-const loadStateFromLocalStorage = (): CarritoState => {
-  try {
-    const serializedState = localStorage.getItem('carritoState');
-    if (serializedState === null) {
-      return { productos: [] }; // Estado inicial si no hay datos en localStorage
-    }
-    return JSON.parse(serializedState); // Cargar el estado desde localStorage
-  } catch (error) {
-    console.error('Error al cargar el estado desde localStorage:', error);
-    return { productos: [] }; // Estado inicial en caso de error
-  }
+const initialState: CarritoState = {
+  productos: [],
 };
 
-const initialState: CarritoState = loadStateFromLocalStorage(); // Usar el estado cargado desde localStorage
-
 const carritoSlice = createSlice({
-  name: 'carrito',
+  name: "carrito",
   initialState,
   reducers: {
+    setCarrito: (state, action: PayloadAction<CarritoState>) => {
+      return action.payload;
+    },
     agregarProducto: (state, action: PayloadAction<Producto>) => {
-      const productoExistente = state.productos.find((p) => p.id === action.payload.id);
+      const productoExistente = state.productos.find((p) => p._id === action.payload._id); // Usa `_id`
       if (productoExistente) {
         productoExistente.cantidad += 1;
       } else {
         state.productos.push({ ...action.payload, cantidad: 1 });
       }
     },
-    eliminarProducto: (state, action: PayloadAction<number>) => {
-      state.productos = state.productos.filter((p) => p.id !== action.payload);
+    eliminarProducto: (state, action: PayloadAction<string>) => { // Cambia el tipo a `string`
+      state.productos = state.productos.filter((p) => p._id !== action.payload); // Usa `_id`
     },
-    incrementarCantidad: (state, action: PayloadAction<number>) => {
-      const producto = state.productos.find((p) => p.id === action.payload);
+    incrementarCantidad: (state, action: PayloadAction<string>) => { // Cambia el tipo a `string`
+      const producto = state.productos.find((p) => p._id === action.payload); // Usa `_id`
       if (producto) {
         producto.cantidad += 1;
       }
     },
-    decrementarCantidad: (state, action: PayloadAction<number>) => {
-      const producto = state.productos.find((p) => p.id === action.payload);
+    decrementarCantidad: (state, action: PayloadAction<string>) => { // Cambia el tipo a `string`
+      const producto = state.productos.find((p) => p._id === action.payload); // Usa `_id`
       if (producto && producto.cantidad > 1) {
         producto.cantidad -= 1;
       } else {
-        // Si la cantidad es 1, elimina el producto del carrito
-        state.productos = state.productos.filter((p) => p.id !== action.payload);
+        state.productos = state.productos.filter((p) => p._id !== action.payload); // Usa `_id`
       }
     },
   },
 });
 
-export const { agregarProducto, eliminarProducto, incrementarCantidad, decrementarCantidad } = carritoSlice.actions;  
+export const { setCarrito, agregarProducto, eliminarProducto, incrementarCantidad, decrementarCantidad } =
+  carritoSlice.actions;
+
 export default carritoSlice.reducer;
