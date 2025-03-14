@@ -11,13 +11,7 @@ const handler = NextAuth({
     ],
     callbacks: {
         async signIn({ user, account, profile }) {
-            // Lista de correos electrónicos que tendrán el rol de admin
-            const adminEmails = ['admin@example.com', 'zackharo1@gmail.com']; // Agrega los correos de los administradores
-
-            // Determinar el rol del usuario
-            const role = adminEmails.includes(user.email || '') ? 'admin' : 'cliente';
-
-            // Guardar la información del usuario en MongoDB
+            // Guardar la información del usuario en MongoDB (opcional)
             const response = await fetch('http://localhost:3001/api/users', {
                 method: 'POST',
                 headers: {
@@ -26,15 +20,12 @@ const handler = NextAuth({
                 body: JSON.stringify({
                     email: user.email,
                     name: user.name,
-                    role: role, // Asignar el rol correspondiente
+                    role: 'cliente', // Rol predeterminado
                 }),
             });
 
-            if (!response.ok) {
-                return false;
-            }
-
-            return true;
+            // No importa si falla la solicitud, permitimos el acceso de todos modos
+            return true; // Permitir el acceso a todos los usuarios
         },
     },
     secret: process.env.NEXTAUTH_SECRET,

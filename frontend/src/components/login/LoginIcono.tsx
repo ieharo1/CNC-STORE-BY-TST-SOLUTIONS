@@ -12,7 +12,12 @@ export default function LoginIcono() {
 
   useEffect(() => {
     if (session?.user?.email) {
-      getRole(session.user.email).then((role) => setRole(role));
+      getRole(session.user.email)
+        .then((role) => setRole(role))
+        .catch((error) => {
+          console.error('Error al obtener el rol:', error);
+          setRole('cliente'); // Rol predeterminado si hay un error
+        });
     }
   }, [session]);
 
@@ -28,7 +33,7 @@ export default function LoginIcono() {
       {session ? (
         <>
           <span className="text-white">{session.user?.email}</span>
-          {role === 'admin' && ( // Usar el rol obtenido del backend
+          {role === 'admin' && ( // Mostrar contenido especial para administradores
             <>
               <Link href="/admin" className="text-white hover:text-gray-300">
                 Panel de Admin
