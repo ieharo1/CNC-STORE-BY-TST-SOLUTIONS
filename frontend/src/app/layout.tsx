@@ -26,43 +26,50 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="bg-white text-black">
         <SessionProvider>
           <Provider store={store}>
-            <header className="bg-red-600 text-white p-4 flex items-center">
-              <div className="container mx-auto flex items-center">
-                {/* Envolvemos el logo en un Link para redirigir a la pantalla principal */}
+            <header className="bg-red-600 text-white p-4 flex items-center relative">
+              <div className="container mx-auto flex items-center justify-between w-full">
+                {/* Espacio a la izquierda para el carrito */}
+                <div className="flex items-center space-x-4">
+                  <Link href="/" className="text-white hover:underline flex items-center relative">
+                    <div className="flex items-center">
+                      <i className="fas fa-home text-2xl"></i>
+                    </div>
+                  </Link>
+                  <AdminIcono />
+                </div>
+                {/* Espacio a la derecha para el login y admin */}
+                <div className="flex items-center space-x-4">
+                  <CarritoIcono />
+                  <LoginIcono />
+                </div>
+              </div>
+              {/* Logo centrado con posicionamiento absoluto */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center">
                 <Link href="/" className="flex items-center space-x-2 hover:scale-105 transition-transform duration-300">
                   <Image
                     src="/images/pantalla-principal/logo-negro.png" // Ruta de tu logo
                     alt="Logo LEGION CNC"
-                    width={48}
-                    height={48}
-                    className="h-12 w-auto mr-4"
+                    width={40}
+                    height={40}
+                    className="h-10 w-auto sm:h-12 md:h-14" // Tamaño responsivo
                   />
-                  <h1 className="text-2xl font-bold">LEGION CNC</h1>
                 </Link>
-                <nav className="ml-auto flex items-center space-x-6">
-                  {/* Aquí agregamos el ícono de administrador */}
-                  <AdminIcono />
-                  {/* Usa el componente CarritoIcono */}
-                  <CarritoIcono />
-                  {/* Usa el componente CarritoIcono */}
-                  <LoginIcono />
-                </nav>
               </div>
             </header>
             <main className="container mx-auto p-4">{children}</main>
-            <footer className="bg-black text-white p-4 mt-8">
-              <div className="container mx-auto text-center">
+            <footer className="bg-red-600 text-white p-4 mt-8">
+              <div className="container mx-auto text-center text-sm sm:text-base">
                 <p>&copy; 2025 TST SOLUTIONS. Todos los derechos reservados.</p>
               </div>
             </footer>
             {/* Botón flotante de WhatsApp */}
             <div className="fixed bottom-4 right-4 flex items-center space-x-2 group">
-              <span className="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-lg">¡Contáctanos!</span>
+              <span className="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm sm:text-base lg:text-lg">¡Contáctanos!</span>
               <a
                 href="https://wa.me/593998631238"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green-500 text-white w-16 h-16 flex items-center justify-center rounded-full shadow-lg hover:bg-green-600 transition text-3xl group-hover:scale-110 group-hover:rotate-12"
+                className="bg-green-500 text-white w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex items-center justify-center rounded-full shadow-lg hover:bg-green-600 transition text-2xl group-hover:scale-110 group-hover:rotate-12"
               >
                 <i className="fab fa-whatsapp"></i>
               </a>

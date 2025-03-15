@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const Role = require('../models/Role'); // Importar el modelo de roles
-
+const productRoutes = require('../routes/productRoutes'); // Importar las rutas de productos
 const app = express();
 const PORT = 3001;
 
@@ -15,6 +15,9 @@ mongoose.connect('mongodb://localhost:27017/cnc-store')
 // Middleware para parsear JSON
 app.use(express.json());
 app.use(cors());
+
+// Usar las rutas de productos
+app.use('/api', productRoutes);
 
 // Ruta para obtener el rol del usuario
 app.get('/api/role/:email', async (req, res) => {

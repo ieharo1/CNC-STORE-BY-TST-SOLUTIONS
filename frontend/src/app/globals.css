@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Estilos para el modo claro */
+body {
+    background-color: white;
+    color: black;
+}
+
+/* Estilos para el modo oscuro */
+.dark body {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+/* Estilo de la barra de navegación */
+.dark .navbar {
+    background-color: #333;
+}
+
+.light .navbar {
+    background-color: #fff;
+}
