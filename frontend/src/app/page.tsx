@@ -4,7 +4,14 @@ export default function Home() {
   return (
     <div className="min-h-screen rounded-lg pt-4 pb-12">
       {/* Sección de Presentación */}
-      <section className="text-center py-16 bg-red-600 relative text-white  rounded-lg shadow-lg mx-auto  max-w-7xl mt-6">
+      <section className="text-center py-16 relative text-white  rounded-lg shadow-lg mx-auto  max-w-7xl mt-6"
+        style={{
+          backgroundImage: "linear-gradient(rgba(255, 0, 0, 0.6), rgba(255, 0, 0, 0.6)), url('/images/pantalla-principal/fondocnc.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <Image
             src="/images/pantalla-principal/logo-negro.png"
@@ -24,7 +31,7 @@ export default function Home() {
         </a>
       </section>
       {/* Galería de Imágenes */}
-      <section className="text-center py-16 bg-white relative text-black  rounded-lg shadow-lg mx-auto  max-w-7xl mt-6">
+      <section className="text-center py-16 bg-gray-200 relative text-black  rounded-lg shadow-lg mx-auto  max-w-7xl mt-6">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8">Nuestras Máquinas</h2>
         <div className="flex flex-wrap justify-center gap-6 mx-6">
           {[
@@ -51,6 +58,7 @@ export default function Home() {
       </section>
       {/* Garantía, Capacitación, Soporte Técnico */}
       <section className="text-center py-16 bg-gray-900 relative text-white  rounded-lg shadow-lg mx-auto  max-w-7xl mt-6">
+        <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/pantalla-principal/fondocnc.png')" }}></div>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8">Nuestros Servicios</h2>
         <div className="flex flex-wrap justify-center gap-12 text-3xl sm:text-4xl">
           {[
@@ -67,7 +75,7 @@ export default function Home() {
         </div>
       </section>
       {/* Materiales */}
-      <section className="text-center py-16 bg-white relative text-black  rounded-lg shadow-lg mx-auto  max-w-7xl mt-6">
+      <section className="text-center py-16 bg-gray-200 relative text-black  rounded-lg shadow-lg mx-auto  max-w-7xl mt-6">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8">
           Trabajamos con una gran variedad de materiales
         </h2>
@@ -116,13 +124,13 @@ export default function Home() {
         </div>
       </section>
       {/* Testimonios */}
-      <section className="text-center py-16 bg-white relative text-black  rounded-lg shadow-lg mx-auto  max-w-7xl mt-6">
+      <section className="text-center py-16 bg-gray-200 relative text-black  rounded-lg shadow-lg mx-auto  max-w-7xl mt-6">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8">Nuestros Clientes</h2>
         <div className="flex flex-wrap justify-center gap-8">
           {[1, 2, 3, 4].map((_, index) => (
-            <div key={index} className="flex items-center max-w-md mx-auto bg-gray-100 p-6 rounded-lg shadow-lg">
+            <div key={index} className="flex items-center max-w-md mx-auto bg-red-600 text-white p-6 rounded-lg shadow-lg">
               <Image
-                src="/images/testimonials/testimonio1.jpg"
+                src="/images/pantalla-principal/testimonios/cliente.jpg"
                 alt={`Testimonio ${index + 1}`}
                 width={100}
                 height={100}
@@ -134,6 +142,28 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+      {/* Experiencia y Cobertura */}
+      <section className="flex flex-col md:flex-row items-center justify-center py-16 bg-gray-900 relative text-white rounded-lg shadow-lg mx-auto max-w-7xl mt-6">
+        <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/pantalla-principal/fondocnc.png')" }}></div>
+        <div className="md:w-1/2 flex justify-center">
+          <img src="/images/pantalla-principal/ecuador.png" alt="Mapa de Ecuador" className="w-1/3 sm:w-1/1 md:w-1/2 lg:w-1/3" />
+        </div>
+        <div className="md:w-1/2 text-center px-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+            Presencia sólida en Ecuador y expansión internacional
+          </h2>
+
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-6">
+            Transformamos negocios con tecnología de vanguardia
+          </h3>
+
+          <p className="text-lg max-w-3xl mx-auto">
+            Nos encontramos en múltiples puntos estratégicos del país, llevando innovación, eficiencia y soluciones
+            tecnológicas de alto impacto a cada rincón. Nuestra maquinaria garantiza calidad y rentabilidad,
+            potenciando el crecimiento de tu negocio.
+          </p>
         </div>
       </section>
       {/* Contacto */}
