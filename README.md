@@ -20,12 +20,21 @@ Aplicación web TypeScript para tienda en línea de productos CNC.
 - Node.js
 - Base de datos
 
-## Autor
+## 📄 Licencia
 
-🧑‍💻 **Isaac Haro**
+MIT — contribuciones bienvenidas 🚀
+
+---
+
+🧑‍💻 Isaac Haro
 
 Ingeniero en Sistemas · Full Stack · Automatización · Data
 
-## Licencia
+Isaac Esteban Haro Torres
+- 📧 zackharo1@gmail.com
+- 📱 098805517
+- 💻 [GitHub](https://github.com/ieharo1)
+
+Licencia
 
 MIT — contribuciones bienvenidas 🚀
