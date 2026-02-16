@@ -20,11 +20,15 @@ Aplicación web TypeScript para tienda en línea de productos CNC.
 - Node.js
 - Base de datos
 
+---
+
 ## 📄 Licencia
 
 MIT — contribuciones bienvenidas 🚀
 
 ---
+
+## 💻 Creado Por
 
 🧑‍💻 Isaac Haro
 
